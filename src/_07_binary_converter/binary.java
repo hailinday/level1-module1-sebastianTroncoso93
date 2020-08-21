@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -13,9 +14,10 @@ public class binary implements ActionListener {
 
 	JTextField answer = new JTextField(20);
 	JButton button = new JButton();
+	JLabel label = new JLabel();
+	JFrame frame = new JFrame();
 
 	void run() {
-		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
 		frame.setVisible(true);
 		frame.add(panel);
@@ -24,6 +26,7 @@ public class binary implements ActionListener {
 		button.setText("Convert");
 		panel.add(answer);
 		panel.add(button);
+		panel.add(label);
 		frame.pack();
 		button.addActionListener(this);
 	}
@@ -53,5 +56,12 @@ public class binary implements ActionListener {
 		// TODO Auto-generated method stub
 			
 		//event.getSource() == button();
+		JButton buttonPressed = (JButton) event.getSource();
+		
+		if (buttonPressed==button) {
+			String result = convert(answer.getText());
+			label.setText(result);
+			frame.pack();
+		}
 	}
 }
